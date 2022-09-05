@@ -15,23 +15,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: goodbyeweb
+  name: helloweb
   labels:
-    app: goodbye
+    app: hello
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: goodbye
+      app: hello
       tier: web
   template:
     metadata:
       labels:
-        app: goodbye
+        app: hello
         tier: web
     spec:
       containers:
-        - name: goodbye-app
+        - name: hello-app
           image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
           ports:
             - containerPort: 8080
@@ -42,13 +42,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: goodbyeweb-backend
+  name: helloweb-backend
   labels:
-    app: goodbye
+    app: hello
 spec:
   type: NodePort
   selector:
-    app: goodbye
+    app: hello
     tier: web
   ports:
     - port: 8080
