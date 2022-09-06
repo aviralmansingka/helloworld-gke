@@ -5,11 +5,3 @@ metadata:
 spec:
   domains:
     - aviralmansingka.me
----
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: family-cert
-spec:
-  domains:
-    - mansingka.org

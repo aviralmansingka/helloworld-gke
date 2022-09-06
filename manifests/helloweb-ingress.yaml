@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: helloweb
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: helloweb-ip
+    networking.gke.io/managed-certificates: personal-cert
+    kubernetes.io/ingress.class: "gce"
+  labels:
+    app: hello
+spec:
+  rules:
+    - host: aviralmansingka.me
+      http:
+        paths:
+          - path: /*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: helloweb-backend
+                port:
+                  number: 8080
